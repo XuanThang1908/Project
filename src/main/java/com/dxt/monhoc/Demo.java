@@ -21,6 +21,8 @@ public class Demo {
                 found = true;
             }
             if (found) {
+                QuanLyDeCuong q3 = new QuanLyDeCuong();
+                q3.docFileDeCuong("src/main/resources/deCuong.txt", gv, q2);
                 do {
                     System.out.println("\nMENU");
                     System.out.println("1.Tao de cuong");
@@ -109,15 +111,15 @@ public class Demo {
                                 }
                                 dg.setDiemDanhGia(Arrays.asList(danhGiaArray));
                                 h.setHinhThucDG(dg);
-                                QuanLyDeCuong q3 = new QuanLyDeCuong();
-                                q3.docFileDeCuong("src/main/resources/deCuong.txt", gv);
+                                
                                 int number = q3.soLuongDeCuong();
                                 if (number < 5) {
                                     gv.getDsdc().themDeCuongMonHoc(h);
                                     System.out.println("Da tao de cuong thanh cong");
                                     gv.getDsdc().ghiFileDeCuong("src/main/resources/deCuong.txt");
-                                } else
+                                } else {
                                     System.out.println("Da vuot qua so luong de cuong toi da (MAX=5). Khong the tao them");
+                                }
                             } else {
                                 System.out.println("Ma mon hoc khong ton tai");
                             }
@@ -132,14 +134,20 @@ public class Demo {
 
                             break;
                         case 5:
-
+                            q3.sapXep();
+                            System.out.println("Da sap xep thanh cong");
                             break;
                         case 6:
-
+                            List<DeCuongMonHoc> dsdc = q3.timDeCuongTheoGiangVien(mgv);
+                            for (DeCuongMonHoc dc : dsdc) {
+                                System.out.println("Ma mon hoc: " + dc.getMonHoc().getMaMH());
+                                System.out.println("Ten mon hoc: " + dc.getMonHoc().getTenMH());
+                                System.out.println("So tin chi: " + dc.getMonHoc().getSoTin());
+                                System.out.println("He dao tao: " + dc.getHeDaoTao());
+                                System.out.println();
+                            }
                             break;
                         case 7:
-                            QuanLyDeCuong q3 = new QuanLyDeCuong();
-                            q3.docFileDeCuong("src/main/resources/deCuong.txt", gv, q2);
                             System.out.print("Nhap ma mon hoc cua de cuong muon xuat: ");
                             String mmh1 = sc.nextLine();
                             MonHoc mh1 = q2.timKiemMonHocTheoMa(mmh1);
