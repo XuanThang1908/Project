@@ -1,2 +1,3 @@
-MH001;A;B;C;D;E;CHINH_QUY;Nguyen Van A;2;a;b;c;60.0;d;e;f;40.0
-MH001;A;B;C;D;E;LIEN_THONG;Nguyen Van A;2;a;b;c;40.0;d;e;f;60.0
+MH0002;A;B;C;D;E;CHINH_QUY;Nguyen Van A;2;a;b;c;60.0;d;e;f;40.0
+MH0001;A;B;C;D;E;LIEN_THONG;Nguyen Van A;2;a;b;c;40.0;d;e;f;60.0
+MH0003;A;B;C;D;E;CHINH_QUY;Nguyen Van A;2;a;b;c;60.0;d;e;f;40.0
