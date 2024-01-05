@@ -2,6 +2,7 @@ package com.dxt.monhoc;
 
 import java.util.*;
 import java.io.*;
+import java.util.stream.Collectors;
 
 public class QuanLyDeCuong {
 
@@ -102,29 +103,8 @@ public class QuanLyDeCuong {
         }
     }
 
-    public void docFileDeCuong(String filename, GiangVien gv) {
-        this.dsDeCuong.clear();
-        try ( BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                DeCuongMonHoc deCuong = new DeCuongMonHoc();
-                this.dsDeCuong.add(deCuong);
-            }
-        } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
-        }
-    }
-
     public int soLuongDeCuong() {
         return this.dsDeCuong.size();
-    }
-
-    public boolean tonTaiDeCuongMonHoc(MonHoc monHoc, HeDaoTao heDaoTao) {
-        return dsDeCuong.stream().anyMatch(dc -> dc.getMonHoc().equals(monHoc) && dc.getHeDaoTao().equals(heDaoTao));
-    }
-
-    public List<DeCuongMonHoc> layDanhSachDeCuongTheoTenGiangVien() {
-        return new ArrayList<>(dsDeCuong);
     }
 
     public void xuatDeCuong(DeCuongMonHoc dc) {
@@ -147,6 +127,16 @@ public class QuanLyDeCuong {
         }
     }
 
+    public void xuatDSDeCuong(List<DeCuongMonHoc> dsdc, String maGV) {
+        for (DeCuongMonHoc dc : dsdc) {
+            System.out.println("Ma mon hoc: " + dc.getMonHoc().getMaMH());
+            System.out.println("Ten mon hoc: " + dc.getMonHoc().getTenMH());
+            System.out.println("So tin chi: " + dc.getMonHoc().getSoTin());
+            System.out.println("He dao tao: " + dc.getHeDaoTao());
+            System.out.println();
+        }
+    }
+
     public DeCuongMonHoc timDeCuong(MonHoc mh, HeDaoTao heDaoTao) {
         Optional<DeCuongMonHoc> dc = dsDeCuong.stream()
                 .filter(g -> {
@@ -156,5 +146,24 @@ public class QuanLyDeCuong {
                 })
                 .findFirst();
         return dc.orElse(null);
+    }
+
+    public List<DeCuongMonHoc> timDeCuongTheoGiangVien(String maGiangVien) {
+        return this.dsDeCuong.stream().filter(dc -> dc.getNguoiBienSoan().getMaID().equals(maGiangVien)).collect(Collectors.toList());
+    }
+
+    public void sapXep() {
+        Collections.sort(this.dsDeCuong, (dc1, dc2) -> {
+            int st1 = dc1.getMonHoc().getSoTin();
+            int st2 = dc2.getMonHoc().getSoTin();
+            if (st1 == st2) {
+                String ma1 = dc1.getMonHoc().getMaMH();
+                String ma2 = dc2.getMonHoc().getMaMH();
+                int n1 = Integer.parseInt(ma1.substring(ma1.length() - 4));
+                int n2 = Integer.parseInt(ma2.substring(ma2.length() - 4));
+                return Integer.compare(n1, n2);
+            }
+            return Integer.compare(st2, st1);
+        });
     }
 }
