@@ -1,3 +1,3 @@
-MH001;Co so du lieu;Mon hoc nay trang bi cho sinh vien cac kien thuc ve Co so du lieu;4;CO_SO_NGANH;0;0
-MH002;Mang may tinh;Mon hoc nay trang bi cho sinh vien cac kien thuc ve Mang may tinh;4;CO_SO_NGANH;0;0
-MH003;Xac suat thong ke;Mon hoc nay trang bi cho sinh vien cac kien thuc ve Xac suat thong ke;3;CO_SO;0;0
+MH0001;Co so du lieu;Mon hoc nay trang bi cho sinh vien cac kien thuc ve Co so du lieu;4;CO_SO_NGANH;0;0
+MH0002;Mang may tinh;Mon hoc nay trang bi cho sinh vien cac kien thuc ve Mang may tinh;3;CO_SO_NGANH;0;0
+MH0003;Xac suat thong ke;Mon hoc nay trang bi cho sinh vien cac kien thuc ve Xac suat thong ke;2;CO_SO;0;0
